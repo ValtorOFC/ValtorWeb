@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Puff - Valtor Oficial</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+        h1 {
+            color: #111;
+            margin: 30px 0 20px;
+        }
+        .descripcion {
+            max-width: 750px;
+            margin: 0 auto 25px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .galeria {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .galeria img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .info {
+            max-width: 780px;
+            margin: 0 auto 30px;
+            text-align: left;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-size: 1.05em;
+        }
+        .info h3 {
+            margin-top: 25px;
+            color: #111;
+        }
+        .btn-volver {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 8px;
+            margin: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 14px;
+        }
+        .close, .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            user-select: none;
+        }
+        .close { top: 10%; right: 5%; font-size: 2.5em; transform: none; }
+        .prev { left: 2%; }
+        .next { right: 2%; }
+    </style>
+</head>
+
+<body>
+
+<h1>Puff Valtor</h1>
+
+<div class="descripcion">
+    Puff para eventos, cumpleaños y hogar.<br>
+    Venta por menor y por mayor.
+</div>
+
+<div class="galeria">
+    <img src="static/IMG_20260114_192918_806.webp" onclick="abrirModal(0)">
+    <img src="static/IMG-20260129-WA0006.jpg" onclick="abrirModal(1)">
+    <img src="static/IMG-20260129-WA0007.jpg" onclick="abrirModal(2)">
+    <img src="static/IMG-20260129-WA0008.jpg" onclick="abrirModal(3)">
+    <img src="static/IMG-20260130-WA0036.jpg" onclick="abrirModal(4)">
+    <img src="static/IMG-20260130-WA0037.jpg" onclick="abrirModal(5)">
+</div>
+
+<div class="modal" id="modal">
+    <span class="close" onclick="cerrarModal()">&times;</span>
+    <span class="prev" onclick="cambiar(-1)">&#10094;</span>
+    <img id="modal-img" src="">
+    <span class="next" onclick="cambiar(1)">&#10095;</span>
+</div>
+
+<div class="info">
+    <h3>Puff – Alquiler para eventos y cumpleaños</h3>
+    <p>
+        • Tela ecocuero reforzado<br>
+        • Ideal para eventos y cumpleaños
+    </p>
+    <p>
+        • Combo 1: 10 puff + 1 mesa — <strong>$20.000</strong><br>
+        • Combo 2: 10 puff + 2 mesas — <strong>$25.000</strong><br>
+        • Combo 3: 8 puff + 2 mesas + 1 butacón — <strong>$35.000</strong><br>
+        • Consultar por mayor cantidad
+    </p>
+
+    <h3>Puff para tu hogar</h3>
+    <p>
+        • Tela de ecocuero<br>
+        • Colores a elección<br>
+        • Puff: 40 × 40 cm<br>
+        • Mesa: 95 × 45 cm
+    </p>
+
+    <h3>Puff premium</h3>
+    <p>
+        • Tela de pana antidesgarro / antimanchas<br>
+        • Patas de metal<br>
+        • Puff 40 × 40 cm<br>
+        • Precio por unidad — <strong>$40.000</strong>
+    </p>
+
+    <h3>Venta – Combos</h3>
+    <p>
+        • 10 puff + 1 mesa — <strong>$150.000</strong><br>
+        • 10 puff + 2 mesas — <strong>$160.000</strong><br>
+        • Reforzados, ideales para alquiler
+    </p>
+
+    <p>
+        Envíos a todo el país<br>
+        Venta por mayor y menor<br>
+        Efectivo · Transferencia · Mercado Pago
+    </p>
+</div>
+
+<a class="btn-volver" href="index.html">← Volver al catálogo</a>
+
+<script>
+    const fotos = [
+        "static/IMG_20260114_192918_806.webp",
+        "static/IMG-20260129-WA0006.jpg",
+        "static/IMG-20260129-WA0007.jpg",
+        "static/IMG-20260129-WA0008.jpg",
+        "static/IMG-20260130-WA0036.jpg",
+        "static/IMG-20260130-WA0037.jpg"
+    ];
+    let index = 0;
+
+    function abrirModal(i) {
+        index = i;
+        document.getElementById('modal-img').src = fotos[index];
+        document.getElementById('modal').style.display = "flex";
+    }
+
+    function cerrarModal() {
+        document.getElementById('modal').style.display = "none";
+    }
+
+    function cambiar(n) {
+        index += n;
+        if (index < 0) index = fotos.length - 1;
+        if (index >= fotos.length) index = 0;
+        document.getElementById('modal-img').src = fotos[index];
+    }
+</script>
+
+</body>
+  </html>
