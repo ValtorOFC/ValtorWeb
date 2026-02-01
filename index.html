@@ -1,119 +1,226 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Valtor Oficial</title>
+    <title>Puff - Valtor Oficial</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
             background: #f9f9f9;
             margin: 0;
-            padding: 12px 10px;
-            color: #333;
+            padding: 20px;
             text-align: center;
-            line-height: 1.3;
+            color: #333;
         }
-        h1 { color: #111; margin: 18px 0 6px; font-size: 2.1em; }
-        .slogan { color: #666; font-size: 1.05em; margin: 0 0 20px; }
-        h2 { margin: 20px 0 15px; font-size: 1.7em; color: #222; }
-
-        .contenedor-productos {
-            max-width: 1000px;
-            margin: 0 auto;
+        h1 {
+            color: #111;
+            margin: 30px 0 20px;
+        }
+        .descripcion {
+            max-width: 750px;
+            margin: 0 auto 25px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .galeria {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
             justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
         }
-
-        .producto {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-            padding: 18px 14px;
-            flex: 1 1 42%;
-            max-width: 220px;
-            min-width: 160px;
+        .galeria img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.15s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-
-        .producto:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        .info {
+            max-width: 780px;
+            margin: 0 auto 30px;
+            text-align: left;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-size: 1.05em;
         }
-
-        .producto h3 {
-            margin: 0 0 8px;
-            font-size: 1.35em;
+        .info h3 {
+            margin-top: 25px;
             color: #111;
         }
-
-        .producto p {
-            margin: 0;
-            font-size: 0.95em;
-            color: #444;
-        }
-
-        .btn-whatsapp {
-            display: block;
-            margin: 28px auto 20px;
-            padding: 14px 36px;
-            background: #25D366;
+        .btn-volver {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #6c757d;
             color: white;
             text-decoration: none;
-            font-size: 1.25em;
-            font-weight: bold;
-            border-radius: 50px;
-            width: fit-content;
-            box-shadow: 0 3px 10px rgba(37,211,102,0.3);
+            font-size: 1.1em;
+            border-radius: 8px;
+            margin: 10px;
         }
-
-        @media (max-width: 500px) {
-            h1 { font-size: 1.9em; margin: 15px 0 5px; }
-            h2 { font-size: 1.55em; }
-            .producto { flex: 1 1 100%; max-width: 100%; }
-            .btn-whatsapp { font-size: 1.15em; padding: 12px 32px; }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
         }
+        .modal img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 14px;
+        }
+        .close, .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            user-select: none;
+        }
+        .close { top: 10%; right: 5%; font-size: 2.5em; transform: none; }
+        .prev { left: 2%; }
+        .next { right: 2%; }
     </style>
 </head>
+
 <body>
 
-    <h1>Valtor Oficial</h1>
-    <p class="slogan">Uniendo momentos, forjando historias</p>
+<h1>Puff Valtor</h1>
 
-    <h2>Catálogo</h2>
+<div class="descripcion">
+    Puff para eventos, cumpleaños y hogar.<br>
+    Venta por menor y por mayor.
+</div>
 
-    <div class="contenedor-productos">
-        <a href="puff.html" class="producto">
-            <h3>Puff</h3>
-            <p>Ideal para eventos, cumpleaños y hogares</p>
-        </a>
+<div class="galeria">
+    <img src="static/IMG-20260114-WA0009.jpg" onclick="abrirModal(0)">
+    <img src="static/IMG-20260129-WA0006.jpg" onclick="abrirModal(1)">
+    <img src="static/IMG-20260129-WA0008.jpg" onclick="abrirModal(2)">
+    <img src="static/IMG-20260130-WA0036.jpg" onclick="abrirModal(3)">
+</div>
 
-        <a href="sillones.html" class="producto">
-            <h3>Sillón</h3>
-            <p>Confort premium</p>
-        </a>
+<div class="modal" id="modal">
+    <span class="close" onclick="cerrarModal()">×</span>
+    <span class="prev" onclick="cambiar(-1)">&#10094;</span>
+    <img id="modal-img" src="">
+    <span class="next" onclick="cambiar(1)">&#10095;</span>
+</div>
 
-        <a href="almohadas.html" class="producto">
-            <h3>Almohada</h3>
-            <p>Hoteleras – venta por mayor y menor</p>
-        </a>
+<div class="info">
 
-        <a href="camas-mascotas.html" class="producto">
-            <h3>Camas para mascotas</h3>
-            <p>Comodidad para tu mejor amigo</p>
-        </a>
-    </div>
+<h3>Puff – Alquiler para eventos y cumpleaños</h3>
+<p>
+    • Tela ecocuero reforzado<br>
+    • Ideal para eventos y cumpleaños
+</p>
 
-    <a class="btn-whatsapp" href="https://wa.me/5491141852322?text=¡Hola!%20Vi%20el%20catálogo%20y%20quiero%20consultar..." target="_blank">
-        Consultar por WhatsApp
-    </a>
+<p>
+    • Combo 1: 10 puff + 1 mesa — <strong>$20.000</strong><br>
+    • Combo 2: 10 puff + 2 mesas — <strong>$25.000</strong><br>
+    • Combo 3: 8 puff + 2 mesas + 1 butacón — <strong>$35.000</strong><br>
+    • Consultar por mayor cantidad
+</p>
+
+<div class="galeria">
+    <img src="static/IMG-20260114-WA0009.jpg">
+    <img src="static/IMG-20260129-WA0006.jpg">
+</div>
+
+<h3>Puff para tu hogar</h3>
+<p>
+    • Tela de ecocuero<br>
+    • Colores a elección<br>
+    • Puff: 40 × 40 cm<br>
+    • Mesa: 95 cm largo × 45 cm ancho
+</p>
+
+<p>
+    • Combo: 4 puff + 1 mesa — <strong>Consultar</strong>
+</p>
+
+<div class="galeria">
+    <img src="static/IMG-20260130-WA0036.jpg">
+    <img src="static/IMG-20260129-WA0008.jpg">
+</div>
+
+<h3>Puff premium</h3>
+<p>
+    • Tela de pana antidesgarro / antimanchas<br>
+    • Patas de metal<br>
+    • Puff 40 × 40 cm
+</p>
+
+<p>
+    • Precio por unidad — <strong>$40.000</strong>
+</p>
+
+<div class="galeria">
+    <img src="static/IMG-20260129-WA0008.jpg">
+    <img src="static/IMG-20260114-WA0009.jpg">
+</div>
+
+<h3>Venta – Combos</h3>
+<p>
+    • 10 puff + 1 mesa — <strong>$150.000</strong><br>
+    • 10 puff + 2 mesas — <strong>$160.000</strong><br>
+    • Reforzados, ideales para alquiler
+</p>
+
+<div class="galeria">
+    <img src="static/IMG-20260129-WA0006.jpg">
+    <img src="static/IMG-20260130-WA0036.jpg">
+</div>
+
+<p>
+    Envíos a todo el país<br>
+    Venta por mayor y menor<br>
+    Efectivo · Transferencia · Mercado Pago
+</p>
+
+</div>
+
+<a class="btn-volver" href="/">← Volver al catálogo</a>
+
+<script>
+    const fotos = [
+        "static/IMG-20260114-WA0009.jpg",
+        "static/IMG-20260129-WA0006.jpg",
+        "static/IMG-20260129-WA0008.jpg",
+        "static/IMG-20260130-WA0036.jpg"
+    ];
+    let index = 0;
+
+    function abrirModal(i) {
+        index = i;
+        document.getElementById('modal-img').src = fotos[index];
+        document.getElementById('modal').style.display = "flex";
+    }
+
+    function cerrarModal() {
+        document.getElementById('modal').style.display = "none";
+    }
+
+    function cambiar(n) {
+        index += n;
+        if (index < 0) index = fotos.length - 1;
+        if (index >= fotos.length) index = 0;
+        document.getElementById('modal-img').src = fotos[index];
+    }
+</script>
 
 </body>
 </html>
